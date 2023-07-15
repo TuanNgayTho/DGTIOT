@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/data', views.getAllDataAPIVIEW.as_view(), name="api-data"),
     path('export', views.ExPortCSV, name='export'),
     path('dgt', views.dengiaothong, name='dgt'),
+    path('', views.dengiaothong, name='dgtt'),
 ]

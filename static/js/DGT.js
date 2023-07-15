@@ -1,4 +1,9 @@
-var socket1 = new WebSocket('ws://localhost:8000/ws/Mqtt/');
+//var socket1 = new WebSocket('ws://localhost:8000/ws/Mqtt/');
+var socket1 = new WebSocket(
+    'ws://'
+    + window.location.host
+    + ':8001/ws/Mqtt/'
+    );
 socket1.onmessage = function(event){
     const mqtt = event.data;
 

@@ -4,7 +4,7 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Led_project.settings')
 
-BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = 'redis://103.184.113.154:6379/0'
 app= Celery('Led_project', broker=BROKER_URL)
 app.config_from_object('django.conf:settings', namespace='CElERY')
 app.conf.beat_schedule = {

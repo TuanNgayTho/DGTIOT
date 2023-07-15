@@ -76,7 +76,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Led_project.wsgi.application'
 ASGI_APPLICATION = "Led_project.asgi.application"
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://103.184.113.154:6379/0'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -103,13 +103,14 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [("103.184.113.154", 6379)],
             "capacity": 1500,  # default 100
             "expiry": 5,  # default 60
         },
     },
 }
 
+# print(os.environ.get('REDIS_URL', 'redis://localhost:6379'))
 # CHANNEL_LAYERS = {
 #     "default": {
 #         "BACKEND": "channels.layers.InMemoryChannelLayer"
@@ -151,14 +152,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static"
-# ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
