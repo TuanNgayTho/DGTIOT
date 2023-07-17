@@ -76,10 +76,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Led_project.wsgi.application'
 ASGI_APPLICATION = "Led_project.asgi.application"
 
-CELERY_BROKER_URL = 'redis://103.184.113.154:6379/0'
+CELERY_BROKER_URL = 'redis://:tmktek@103.184.113.154:6379/0'
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases@
 
 # DATABASES = {
 #     'default': {
@@ -103,14 +103,24 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("103.184.113.154", 6379)],
+            # "hosts": [("103.184.113.154", 6379)],
+            "hosts": [("redis://:tmktek@103.184.113.154:6379/0")],
             "capacity": 1500,  # default 100
             "expiry": 5,  # default 60
         },
     },
 }
 
-# print(os.environ.get('REDIS_URL', 'redis://localhost:6379'))
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:tmktek@103.184.113.154:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
 # CHANNEL_LAYERS = {
 #     "default": {
 #         "BACKEND": "channels.layers.InMemoryChannelLayer"
