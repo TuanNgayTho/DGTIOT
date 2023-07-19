@@ -1,5 +1,10 @@
 //chart block
-var socket2 = new WebSocket('ws://localhost:8000/ws/Mqtt/');
+//var socket2 = new WebSocket('ws://localhost:8000/ws/Mqtt/');
+var socket2 = new WebSocket(
+    'ws://'
+    + window.location.host
+    + ':8001/ws/Mqtt/'
+    );
 const ctx = document.getElementById('myChart');
 
 var graphData = {
